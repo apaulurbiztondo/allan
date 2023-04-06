@@ -23,11 +23,11 @@ Tools used:
 
 In this project, it uses package-by-feature structure:
 
-- com.example.allan
-    - exceptions
-        ResourceNotFoundException
-    - users
-        User
-        UserController
-        UserRepository
-        UserService
+com.example.allan
+  - exceptions
+    - ResourceNotFoundException
+  - users
+    - User
+    - UserController
+    - UserRepository
+    - UserService
