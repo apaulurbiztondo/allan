@@ -19,4 +19,15 @@ Tools used:
   - Maven
   - Git
   - Eclipse
-  - SonarLint extension
+  - SonarLint extension 
+
+In this project, it uses package-by-feature structure:
+
+- com.example.allan
+    - exceptions
+        ResourceNotFoundException
+    - users
+        User
+        UserController
+        UserRepository
+        UserService
