@@ -18,4 +18,5 @@ Tools used:
   - Spring Framework
   - Maven
   - Git
-  - SonarLint
+  - Eclipse
+  - SonarLint extension
