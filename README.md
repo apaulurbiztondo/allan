@@ -19,7 +19,7 @@ Tools used:
   - Maven
   - Git
   - Eclipse
-  - SonarLint extension 
+  - SonarLint plugins 
 
 In this project, it uses package-by-feature structure:
 
