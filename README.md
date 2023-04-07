@@ -33,6 +33,7 @@ com.example.allan
     - UserController
     - UserRepository
     - UserService
+    
 tes/java/com.example.allan
   - users
     - UserControllerTests
