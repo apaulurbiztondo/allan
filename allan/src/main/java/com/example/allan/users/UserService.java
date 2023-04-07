@@ -36,8 +36,8 @@ public class UserService {
 
 		existingUser = User.builder()
 				.id(existingUser.getId())
-				.name(user.getName()).
-				email(user.getEmail())
+				.name(user.getName())
+				.email(user.getEmail())
 				.active(user.isActive())
 				.build();
 
