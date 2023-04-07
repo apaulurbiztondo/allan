@@ -10,7 +10,7 @@ Informations:
 
 JUnit Test:
 
-  - Created "UserControllerTests" class for "UserController" that uses the Mockito framework to test various controller methods. The tests include getting all users, getting a user by ID, creating a user, updating a user, and deleting a user. The test methods use Mockito annotations to mock the UserService class and verify expected responses and behavior.
+  - Created "UserControllerTests" class for "UserController" and "UserServiceTests" class for "UserService" that uses the Mockito framework to test various controller methods. The tests include getting all users, getting a user by ID, creating a user, updating a user, and deleting a user. The test methods use Mockito annotations to mock the UserService class and verify expected responses and behavior.
 
 Tools used:
 
@@ -19,7 +19,9 @@ Tools used:
   - Maven
   - Git
   - Eclipse
-  - SonarLint plugins 
+  - SonarLint plugins
+  - JUnit
+  - Mockito Framework
 
 In this project, it uses package-by-feature structure:
 
@@ -31,3 +33,7 @@ com.example.allan
     - UserController
     - UserRepository
     - UserService
+tes/java/com.example.allan
+  - users
+    - UserControllerTests
+    - UserServiceTests
