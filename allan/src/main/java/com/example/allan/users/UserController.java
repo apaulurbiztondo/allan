@@ -31,9 +31,10 @@ public class UserController {
 
 	@GetMapping
 	@Cacheable
-	public List<User> getAllUsers() {
+	public ResponseEntity<List<User>> getAllUsers() {
 		log.info("Getting all users");
-		return userService.getAllUsers();
+		List<User> users = userService.getAllUsers();
+		return ResponseEntity.ok(users);
 	}
 
 	@GetMapping("/{id}")

@@ -37,10 +37,9 @@ class UserControllerTests {
 		User user2 = new User(2L, "Paulo", "allanpaulourbiztondo+1@gmail.com", false);
 		List<User> userList = Arrays.asList(user1, user2);
 		when(userService.getAllUsers()).thenReturn(userList);
-		List<User> result = userController.getAllUsers();
-		assertEquals(2, result.size());
-		assertEquals(user1, result.get(0));
-		assertEquals(user2, result.get(1));
+		ResponseEntity<List<User>> response = userController.getAllUsers();
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(userList, response.getBody());
 	}
 
 	@Test
