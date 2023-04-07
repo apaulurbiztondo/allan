@@ -1,4 +1,4 @@
-package com.example.allan;
+package com.example.allan.users;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -18,9 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.allan.exceptions.ResourceNotFoundException;
-import com.example.allan.users.User;
-import com.example.allan.users.UserController;
-import com.example.allan.users.UserService;
 
 class UserControllerTests {
 
@@ -49,7 +46,7 @@ class UserControllerTests {
 	@Test
 	void testGetUserById() throws ResourceNotFoundException {
 		Long id = 1L;
-		User user = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
+		User user = new User(id, "Allan", "allanpaulourbiztondo@gmail.com", true);
 		when(userService.getUserById(id)).thenReturn(user);
 		ResponseEntity<User> response = userController.getUserById(id);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -77,8 +74,8 @@ class UserControllerTests {
 	@Test
 	void testUpdateUser() throws ResourceNotFoundException {
 		Long id = 1L;
-		User user = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
-		User updatedUser = new User(1L, "Allan Paulo", "allanpaulourbiztondo+1@gmail.com", true);
+		User user = new User(id, "Allan", "allanpaulourbiztondo@gmail.com", true);
+		User updatedUser = new User(id, "Allan Paulo", "allanpaulourbiztondo+1@gmail.com", true);
 		when(userService.updateUser(id, user)).thenReturn(updatedUser);
 		ResponseEntity<User> response = userController.updateUser(id, user);
 		assertEquals(HttpStatus.CREATED, response.getStatusCode());
@@ -88,7 +85,7 @@ class UserControllerTests {
 	@Test
 	void testUpdateUserNotFound() throws ResourceNotFoundException {
 		Long id = 1L;
-		User user = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
+		User user = new User(id, "Allan", "allanpaulourbiztondo@gmail.com", true);
 		when(userService.updateUser(id, user)).thenThrow(new ResourceNotFoundException("User not found with id " + id));
 		ResponseEntity<User> response = userController.updateUser(id, user);
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
