@@ -22,10 +22,11 @@ Tools used:
   - SonarLint plugins
   - JUnit
   - Mockito Framework
+  - Lombok
 
 In this project, it uses package-by-feature structure:
 
-com.example.allan
+com.example.demo
   - exceptions
     - ResourceNotFoundException
   - users
@@ -34,7 +35,7 @@ com.example.allan
     - UserRepository
     - UserService
     
-tes/java/com.example.allan
+tes/java/com.example.demo
   - users
     - UserControllerTests
     - UserServiceTests
