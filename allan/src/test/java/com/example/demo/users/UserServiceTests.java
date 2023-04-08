@@ -1,4 +1,4 @@
-package com.example.allan.users;
+package com.example.demo.users;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.allan.exceptions.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)

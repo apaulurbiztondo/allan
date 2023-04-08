@@ -1,13 +1,14 @@
-package com.example.allan;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AllanApplication {
+public class CrudDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AllanApplication.class, args);
+		SpringApplication.run(CrudDemoApplication.class, args);
+		System.out.print("Hello World!");
 	}
 
 }

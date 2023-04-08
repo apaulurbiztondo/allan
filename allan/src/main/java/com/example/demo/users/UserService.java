@@ -1,4 +1,4 @@
-package com.example.allan.users;
+package com.example.demo.users;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.allan.exceptions.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {

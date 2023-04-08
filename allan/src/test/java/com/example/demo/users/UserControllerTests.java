@@ -1,4 +1,4 @@
-package com.example.allan.users;
+package com.example.demo.users;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -17,7 +17,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.allan.exceptions.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 
 class UserControllerTests {
 

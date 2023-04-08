@@ -1,4 +1,4 @@
-package com.example.allan.users;
+package com.example.demo.users;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.allan.exceptions.ResourceNotFoundException;
+import com.example.demo.exceptions.ResourceNotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
