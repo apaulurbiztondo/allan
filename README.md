@@ -12,6 +12,18 @@ JUnit Test:
 
   - Created "UserControllerTests" class for "UserController" and "UserServiceTests" class for "UserService" that uses the Mockito framework to test various controller methods. The tests include getting all users, getting a user by ID, creating a user, updating a user, and deleting a user. The test methods use Mockito annotations to mock the UserService class and verify expected responses and behavior.
 
+API endpoints
+The following endpoints are available:
+
+GET /users: Get a list of all user
+GET /users/{id}: Get a single user by ID
+POST /user: Create a new user
+PUT /users/{id}: Update an existing user
+DELETE /users/{id}: Delete a user by ID
+
+Testing
+To test the endpoints, you can use tools like MySQL Workbench and Postman which I did. I used MySQL Workbench to verify that the database was working correctly and Postman to manually test the endpoints.
+
 Tools used:
 
   - Java 17
@@ -23,6 +35,8 @@ Tools used:
   - JUnit
   - Mockito Framework
   - Lombok
+  - MySQL Workbench
+  - Postman
 
 In this project, it uses package-by-feature structure:
 
