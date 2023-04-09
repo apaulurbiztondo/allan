@@ -18,7 +18,7 @@ The following endpoints are available:
 
   - GET /users: Get a list of all user
   - GET /users/{id}: Get a single user by ID
-  - POST /user: Create a new user
+  - POST /users: Create a new user
   - PUT /users/{id}: Update an existing user
   - DELETE /users/{id}: Delete a user by ID
 
