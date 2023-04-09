@@ -15,11 +15,11 @@ JUnit Test:
 API endpoints
 The following endpoints are available:
 
-GET /users: Get a list of all user
-GET /users/{id}: Get a single user by ID
-POST /user: Create a new user
-PUT /users/{id}: Update an existing user
-DELETE /users/{id}: Delete a user by ID
+  - GET /users: Get a list of all user
+  - GET /users/{id}: Get a single user by ID
+  - POST /user: Create a new user
+  - PUT /users/{id}: Update an existing user
+  - DELETE /users/{id}: Delete a user by ID
 
 Testing
 To test the endpoints, you can use tools like MySQL Workbench and Postman which I did. I used MySQL Workbench to verify that the database was working correctly and Postman to manually test the endpoints.
