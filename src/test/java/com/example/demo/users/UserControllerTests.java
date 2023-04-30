@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +60,22 @@ class UserControllerTests {
 		ResponseEntity<User> response = userController.getUserById(id);
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 		assertNull(response.getBody());
+	}
+
+	@Test
+	void testFindActiveUsers() {
+		List<User> activeUsers = new ArrayList<>();
+		User user1 = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
+		User user2 = new User(2L, "Paulo", "allanpaulourbiztondo+1@gmail.com", true);
+		activeUsers.add(user1);
+		activeUsers.add(user2);
+		when(userService.findActiveUsers()).thenReturn(activeUsers);
+
+		ResponseEntity<List<User>> response = userController.findActiveUsers();
+
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(activeUsers, response.getBody());
+		verify(userService, times(1)).findActiveUsers();
 	}
 
 	@Test

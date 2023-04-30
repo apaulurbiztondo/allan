@@ -56,6 +56,21 @@ class UserServiceTests {
 	}
 
 	@Test
+	void testFindActiveUsers() {
+		User user1 = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
+		User user2 = new User(2L, "Paulo", "allanpaulourbiztondo+1@gmail.com", false);
+		List<User> activeUsers = Arrays.asList(user1, user2);
+		when(userRepository.findByActive(true)).thenReturn(activeUsers);
+
+		List<User> result = userService.findActiveUsers();
+
+		assertEquals(activeUsers.size(), result.size());
+		assertEquals(activeUsers.get(0), result.get(0));
+		assertEquals(activeUsers.get(1), result.get(1));
+		verify(userRepository, times(1)).findByActive(true);
+	}
+
+	@Test
 	void testCreateUser() {
 		User user = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
 		when(userRepository.save(user)).thenReturn(user);

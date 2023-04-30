@@ -47,6 +47,10 @@ public class UserService {
 		userRepository.delete(user);
 	}
 
+	public List<User> findActiveUsers(){
+		return userRepository.findByActive(true);
+	}
+
 	private ResourceNotFoundException userNotFound() {
 		return new ResourceNotFoundException("User not found!");
 	}

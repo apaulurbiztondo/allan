@@ -49,6 +49,12 @@ public class UserController {
 		}
 	}
 
+	@GetMapping("/active")
+	public ResponseEntity<List<User>> findActiveUsers() {
+		log.info("Getting active users...");
+		return ResponseEntity.ok().body(userService.findActiveUsers());
+	}
+
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		log.info("Creating new user");
