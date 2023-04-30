@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
 
@@ -23,15 +21,15 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public User getUserById(@PathVariable Long id) throws ResourceNotFoundException {
+	public User getUserById(Long id) throws ResourceNotFoundException {
 		return userRepository.findById(id).orElseThrow(this::userNotFound);
 	}
 
-	public User createUser(@RequestBody User user) {
+	public User createUser(User user) {
 		return userRepository.save(user);
 	}
 
-	public User updateUser(@PathVariable Long id, @RequestBody User user) throws ResourceNotFoundException {
+	public User updateUser(Long id, User user) throws ResourceNotFoundException {
 		User existingUser = userRepository.findById(id).orElseThrow(this::userNotFound);
 
 		existingUser = User.builder()
@@ -44,7 +42,7 @@ public class UserService {
 		return userRepository.save(existingUser);
 	}
 
-	public void deleteUser(@PathVariable Long id) throws ResourceNotFoundException {
+	public void deleteUser(Long id) throws ResourceNotFoundException {
 		User user = userRepository.findById(id).orElseThrow(this::userNotFound);
 		userRepository.delete(user);
 	}
