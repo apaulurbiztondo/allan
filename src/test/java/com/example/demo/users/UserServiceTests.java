@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.error.ResourceNotFoundException;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
