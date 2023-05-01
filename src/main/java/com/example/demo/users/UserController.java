@@ -76,4 +76,15 @@ public class UserController {
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponse> handleException(Exception e) {
+		log.error(e.getMessage());
+		ErrorResponse error = ErrorResponse.builder()
+				.status(HttpStatus.BAD_REQUEST.value())
+				.message(e.getMessage())
+				.timestamp(System.currentTimeMillis())
+				.build();
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+	}
+
 }
