@@ -16,7 +16,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.error.ResourceNotFoundException;
 
 class UserControllerTests {
 

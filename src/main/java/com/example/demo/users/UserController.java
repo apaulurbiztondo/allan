@@ -2,13 +2,12 @@ package com.example.demo.users;
 
 import java.util.List;
 
-import com.example.demo.common.ErrorResponse;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.exceptions.ResourceNotFoundException;
+import com.example.demo.error.ResourceNotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,28 +62,6 @@ public class UserController {
 		log.info("Deleting user with id: {}", id);
 		userService.deleteUser(id);
 		return ResponseEntity.noContent().build();
-	}
-
-	@ExceptionHandler
-	public ResponseEntity<ErrorResponse> handleException(ResourceNotFoundException e){
-		log.error(e.getMessage());
-		ErrorResponse error = ErrorResponse.builder()
-				.status(HttpStatus.NOT_FOUND.value())
-				.message(e.getMessage())
-				.timestamp(System.currentTimeMillis())
-				.build();
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-	}
-
-	@ExceptionHandler
-	public ResponseEntity<ErrorResponse> handleException(Exception e) {
-		log.error(e.getMessage());
-		ErrorResponse error = ErrorResponse.builder()
-				.status(HttpStatus.BAD_REQUEST.value())
-				.message(e.getMessage())
-				.timestamp(System.currentTimeMillis())
-				.build();
-		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 
 }
