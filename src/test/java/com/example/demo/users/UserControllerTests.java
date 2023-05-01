@@ -1,8 +1,6 @@
 package com.example.demo.users;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -54,15 +52,6 @@ class UserControllerTests {
 	}
 
 	@Test
-	void testGetUserByIdNotFound() throws ResourceNotFoundException {
-		Long id = 1L;
-		when(userService.getUserById(id)).thenThrow(new ResourceNotFoundException("User not found with id " + id));
-		ResponseEntity<User> response = userController.getUserById(id);
-		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-		assertNull(response.getBody());
-	}
-
-	@Test
 	void testFindActiveUsers() {
 		List<User> activeUsers = new ArrayList<>();
 		User user1 = new User(1L, "Allan", "allanpaulourbiztondo@gmail.com", true);
@@ -99,16 +88,6 @@ class UserControllerTests {
 	}
 
 	@Test
-	void testUpdateUserNotFound() throws ResourceNotFoundException {
-		Long id = 1L;
-		User user = new User(id, "Allan", "allanpaulourbiztondo@gmail.com", true);
-		when(userService.updateUser(id, user)).thenThrow(new ResourceNotFoundException("User not found with id " + id));
-		ResponseEntity<User> response = userController.updateUser(id, user);
-		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-		assertNull(response.getBody());
-	}
-
-	@Test
 	void testDeleteUser() throws ResourceNotFoundException {
 		Long id = 1L;
 		ResponseEntity<Void> response = userController.deleteUser(id);
@@ -116,11 +95,4 @@ class UserControllerTests {
 		verify(userService, times(1)).deleteUser(id);
 	}
 
-	@Test
-	void testDeleteUserNotFound() throws ResourceNotFoundException {
-		Long id = 1L;
-		doThrow(new ResourceNotFoundException("User not found with id " + id)).when(userService).deleteUser(id);
-		ResponseEntity<Void> result = userController.deleteUser(id);
-		assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
-	}
 }

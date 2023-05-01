@@ -2,17 +2,11 @@ package com.example.demo.users;
 
 import java.util.List;
 
+import com.example.demo.common.ErrorResponse;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.exceptions.ResourceNotFoundException;
 
@@ -38,15 +32,10 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable Long id) {
+	public ResponseEntity<User> getUserById(@PathVariable Long id) throws ResourceNotFoundException {
 		log.info("Getting user with id: {}", id);
-		try {
-			User user = userService.getUserById(id);
-			return ResponseEntity.ok().body(user);
-		} catch (ResourceNotFoundException e) {
-			log.error(e.getMessage());
-			return ResponseEntity.notFound().build();
-		}
+		User user = userService.getUserById(id);
+		return ResponseEntity.ok().body(user);
 	}
 
 	@GetMapping("/active")
@@ -63,27 +52,28 @@ public class UserController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) throws ResourceNotFoundException {
 		log.info("Updating user with id: {}", id);
-		try {
-			User updatedUser = userService.updateUser(id, user);
-			return ResponseEntity.status(HttpStatus.CREATED).body(updatedUser);
-		} catch (ResourceNotFoundException e) {
-			log.error(e.getMessage());
-			return ResponseEntity.notFound().build();
-		}
+		User updatedUser = userService.updateUser(id, user);
+		return ResponseEntity.status(HttpStatus.CREATED).body(updatedUser);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws ResourceNotFoundException {
 		log.info("Deleting user with id: {}", id);
-		try {
-			userService.deleteUser(id);
-			return ResponseEntity.noContent().build();
-		} catch (ResourceNotFoundException e) {
-			log.error(e.getMessage());
-			return ResponseEntity.notFound().build();
-		}
+		userService.deleteUser(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@ExceptionHandler
+	public ResponseEntity<ErrorResponse> handleException(ResourceNotFoundException e){
+		log.error(e.getMessage());
+		ErrorResponse error = ErrorResponse.builder()
+				.status(HttpStatus.NOT_FOUND.value())
+				.message(e.getMessage())
+				.timestamp(System.currentTimeMillis())
+				.build();
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
 }
