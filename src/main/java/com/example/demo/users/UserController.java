@@ -11,8 +11,10 @@ import com.example.demo.error.ResourceNotFoundException;
 
 import lombok.extern.slf4j.Slf4j;
 
+import static com.example.demo.Constants.USERS_API_URL;
+
 @RestController
-@RequestMapping("/users")
+@RequestMapping(USERS_API_URL)
 @Slf4j
 public class UserController {
 
