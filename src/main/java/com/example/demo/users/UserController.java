@@ -28,15 +28,13 @@ public class UserController {
 	@Cacheable
 	public ResponseEntity<List<User>> getAllUsers() {
 		log.info("Getting all users");
-		List<User> users = userService.getAllUsers();
-		return ResponseEntity.ok(users);
+optim		return ResponseEntity.ok(userService.getAllUsers());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable Long id) throws ResourceNotFoundException {
 		log.info("Getting user with id: {}", id);
-		User user = userService.getUserById(id);
-		return ResponseEntity.ok().body(user);
+		return ResponseEntity.ok().body(userService.getUserById(id));
 	}
 
 	@GetMapping("/active")
@@ -48,15 +46,13 @@ public class UserController {
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		log.info("Creating new user");
-		User createdUser = userService.createUser(user);
-		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) throws ResourceNotFoundException {
 		log.info("Updating user with id: {}", id);
-		User updatedUser = userService.updateUser(id, user);
-		return ResponseEntity.status(HttpStatus.CREATED).body(updatedUser);
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.updateUser(id, user));
 	}
 
 	@DeleteMapping("/{id}")
