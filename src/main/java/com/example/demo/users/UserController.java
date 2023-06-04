@@ -28,7 +28,7 @@ public class UserController {
 	@Cacheable
 	public ResponseEntity<List<User>> getAllUsers() {
 		log.info("Getting all users");
-optim		return ResponseEntity.ok(userService.getAllUsers());
+		return ResponseEntity.ok(userService.getAllUsers());
 	}
 
 	@GetMapping("/{id}")
